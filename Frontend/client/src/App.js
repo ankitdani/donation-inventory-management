@@ -1,5 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [donorName, setDonorName] = useState("");
@@ -109,46 +110,64 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Donation Form</h1>
+    <div className="container mt-5">
+      <h1 className="mb-4">Donation Management</h1>
 
-      {/* Form for adding/editing donation */}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder='FirstName LastName'
-          value={donorName}
-          onChange={(e) => setDonorName(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder='Amount Donated'
-          value={amountDonated}
-          onChange={(e) => setAmountDonated(e.target.value)}
-        />
-        <input
-          type="date"
-          value={dateOfDonation}
-          onChange={(e) => setDateOfDonation(e.target.value)}
-        />
-        <select
-          value={donationType}
-          onChange={(e) => setDonationType(e.target.value)}
-        >
-          <option value="">Select Donation Type</option>
-          <option value="Money">Money</option>
-          <option value="Food">Food</option>
-          <option value="Clothing">Clothing</option>
-          <option value="Other">Other</option>
-        </select>
-        <button type="submit">
+      <form onSubmit={handleSubmit} className="mb-5">
+        <div className="form-group">
+          <label htmlFor="donorName">Donor Name</label>
+          <input
+            type="text"
+            id="donorName"
+            className="form-control"
+            placeholder='FirstName LastName'
+            value={donorName}
+            onChange={(e) => setDonorName(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="amountDonated">Amount Donated</label>
+          <input
+            type="number"
+            id="amountDonated"
+            className="form-control"
+            placeholder='Amount Donated'
+            value={amountDonated}
+            onChange={(e) => setAmountDonated(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="dateOfDonation">Date of Donation</label>
+          <input
+            type="date"
+            id="dateOfDonation"
+            className="form-control"
+            value={dateOfDonation}
+            onChange={(e) => setDateOfDonation(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="donationType">Donation Type</label>
+          <select
+            id="donationType"
+            className="form-control"
+            value={donationType}
+            onChange={(e) => setDonationType(e.target.value)}
+          >
+            <option value="">Select Donation Type</option>
+            <option value="Money">Money</option>
+            <option value="Food">Food</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <button type="submit" className="btn btn-primary">
           {editingDonation ? "Update Donation" : "Submit"}
         </button>
       </form>
 
-      {/* Display list of donations */}
-      <h2>List of Recorded Donations</h2>
-      <table>
+      <h2 className="mb-4">List of Recorded Donations</h2>
+      <table className="table table-striped">
         <thead>
           <tr>
             <th>Name</th>
@@ -166,8 +185,8 @@ function App() {
               <td>{new Date(donation.dateOfDonation).toLocaleDateString()}</td>
               <td>{donation.donationType}</td>
               <td>
-                <button onClick={() => handleEdit(donation)}>Edit</button>
-                <button onClick={() => handleDelete(donation.id)}>Delete</button>
+                <button onClick={() => handleEdit(donation)} className="btn btn-warning btn-sm mr-2">Edit</button>
+                <button onClick={() => handleDelete(donation.id)} className="btn btn-danger btn-sm">Delete</button>
               </td>
             </tr>
           ))}
