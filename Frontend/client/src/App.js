@@ -4,6 +4,7 @@ import { useState } from 'react';
 function App() {
   const [donorName, setDonorName] = useState("");
   const [amountDonated, setAmountDonated] = useState(""); // Ensure this matches the backend field
+  const [dateOfDonation, setDateOfDonation] = useState(new Date().toISOString().slice(0, 10)); // Set default to today's date
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,7 +16,8 @@ function App() {
         },
         body: JSON.stringify({ 
           name: donorName, 
-          amountDonated: parseFloat(amountDonated) // Ensure this matches the backend field
+          amountDonated: parseFloat(amountDonated), // Ensure this matches the backend field
+          dateOfDonation
         }),
       });
       const data = await response.json();
@@ -40,6 +42,11 @@ function App() {
           placeholder='Amount Donated'
           value={amountDonated}
           onChange={(e) => setAmountDonated(e.target.value)}
+        />
+        <input
+          type="date"
+          value={dateOfDonation}
+          onChange={(e) => setDateOfDonation(e.target.value)}
         />
         <button type="submit">Submit</button>
       </form>

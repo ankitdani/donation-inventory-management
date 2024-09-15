@@ -3,6 +3,8 @@ package com.dsa.backend;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 @Document(collection = "donors")
 public class Donor {
 
@@ -10,6 +12,8 @@ public class Donor {
     private String id;
     private String name;
     private double amountDonated;
+
+    private Date dateOfDonation;
 
     // Getters and Setters
     public String getId() {
@@ -34,5 +38,13 @@ public class Donor {
 
     public void setAmountDonated(double amountDonated) {
         this.amountDonated = amountDonated;
+    }
+
+    public Date getDateOfDonation() {
+        return dateOfDonation;
+    }
+
+    public void setDateOfDonation(Date dateOfDonation) {
+        this.dateOfDonation = dateOfDonation;
     }
 }

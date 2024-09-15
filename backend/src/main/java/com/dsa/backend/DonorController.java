@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,9 @@ public class DonorController {
 
     @PostMapping
     public ResponseEntity<Donor> createDonor(@RequestBody Donor donor) {
+        if (donor.getDateOfDonation() == null) {
+            donor.setDateOfDonation(new Date()); // Set current date if not provided
+        }
         Donor createdDonor = donorService.createDonor(donor);
         return new ResponseEntity<>(createdDonor, HttpStatus.CREATED);
     }
