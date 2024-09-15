@@ -2,7 +2,7 @@
 
 ## Overview
 
-A full-stack donation management system with a React frontend and a Spring Boot backend.
+A full-stack donation management system with a React frontend and a Spring Boot backend. Checkout the demo [here](https://drive.google.com/file/d/1nzssBiNoZf35kAPesyG--UGEycfOCU-e/view?usp=sharing). Skip to 03:15 to skip the project setup guide.
 
 ## Prerequisites
 
