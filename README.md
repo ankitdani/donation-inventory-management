@@ -58,7 +58,7 @@ mvn spring-boot:run
 
 7. Run frontend:
 ```
-cd frontend
+cd Frontend/client
 ```
 
 ```
