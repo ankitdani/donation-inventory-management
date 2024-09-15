@@ -1,41 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
-import {useState} from 'react'
+import { useState } from 'react';
 
 function App() {
-  
   const [donorName, setDonorName] = useState("");
+  const [amountDonated, setAmountDonated] = useState(""); // Ensure this matches the backend field
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const response = await fetch("http://localhost:8080/api/donations", 
-        {
-          method: "POST",
-          headers: {
+    try {
+      const response = await fetch("http://localhost:8080/api/donations", {
+        method: "POST",
+        headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name: donorName }),
-    });
+        body: JSON.stringify({ 
+          name: donorName, 
+          amountDonated: parseFloat(amountDonated) // Ensure this matches the backend field
+        }),
+      });
       const data = await response.json();
-      console.log(data)
+      console.log(data);
+    } catch (err) {
+      console.error("Error submitting data", err);
     }
-    catch(err){
-      console.error("Error submitting data ", err)
-    }
-
-  }
+  };
 
   return (
     <div>
       <h1>Donations</h1>
       <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
+        <input
+          type="text"
           placeholder='FirstName LastName'
-          onChange={(e)=> setDonorName(e.target.value)} 
+          value={donorName}
+          onChange={(e) => setDonorName(e.target.value)}
         />
-        <button type="Submit">Submit</button>
+        <input
+          type="number"
+          placeholder='Amount Donated'
+          value={amountDonated}
+          onChange={(e) => setAmountDonated(e.target.value)}
+        />
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

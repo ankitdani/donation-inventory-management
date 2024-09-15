@@ -9,6 +9,7 @@ public class Donor {
     @Id
     private String id;
     private String name;
+    private double amountDonated;
 
     // Getters and Setters
     public String getId() {
@@ -27,6 +28,11 @@ public class Donor {
         this.name = name;
     }
 
+    public double getAmountDonated() {
+        return amountDonated;
+    }
 
+    public void setAmountDonated(double amountDonated) {
+        this.amountDonated = amountDonated;
+    }
 }
-
