@@ -33,19 +33,21 @@ mvn install
 
 3. Navigate to the frontend:
 ```
-cd ../frontend
+cd ../Frontend/client
 ```
 
 ```
 npm install
 ```
 
-4. Start MongoDB:
+4. Install MongoDB. Watch [youtube video](https://youtu.be/8gUQL2zlpvI?si=s3EGN6jB1b-gAlsO) to install on MacOS.
+
+5. Start MongoDB in a new terminal:
 ```
 mongod
 ```
 
-5. Run backend:
+6. In a new terminal, run backend:
 ```
 cd backend
 ```
@@ -54,16 +56,16 @@ cd backend
 mvn spring-boot:run
 ```
 
-6. Run frontend:
+7. Run frontend:
 ```
-cd ../frontend
+cd frontend
 ```
 
 ```
 npm start
 ```
 
-The application will be accessible at:
+8. The application will be accessible at:
 ```
 http://localhost:3000
 ```
