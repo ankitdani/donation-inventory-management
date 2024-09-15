@@ -14,7 +14,7 @@ A full-stack donation management system with a React frontend and a Spring Boot 
 
 1. Clone the repository:
 ```
-git clone https://github.com/your-repo.git
+git clone https://github.com/ankitdani/donation-inventory-management.git
 ```
 
 ```
