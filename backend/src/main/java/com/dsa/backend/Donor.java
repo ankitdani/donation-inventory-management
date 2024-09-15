@@ -11,6 +11,7 @@ public class Donor {
     @Id
     private String id;
     private String name;
+    private String donationType;
     private double amountDonated;
 
     private Date dateOfDonation;
@@ -30,6 +31,14 @@ public class Donor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDonationType() {
+        return donationType;
+    }
+
+    public void setDonationType(String donationType) {
+        this.donationType = donationType;
     }
 
     public double getAmountDonated() {

@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 function App() {
   const [donorName, setDonorName] = useState("");
+  const [donationType, setDonationType] = useState("");
   const [amountDonated, setAmountDonated] = useState(""); // Ensure this matches the backend field
   const [dateOfDonation, setDateOfDonation] = useState(new Date().toISOString().slice(0, 10)); // Set default to today's date
 
@@ -15,7 +16,8 @@ function App() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ 
-          name: donorName, 
+          name: donorName,
+          donationType : donationType,
           amountDonated: parseFloat(amountDonated), // Ensure this matches the backend field
           dateOfDonation
         }),
@@ -37,6 +39,13 @@ function App() {
           value={donorName}
           onChange={(e) => setDonorName(e.target.value)}
         />
+        <select value={donationType} onChange={(e) => setDonationType(e.target.value)}>
+          <option value="">Select Donation Type</option>
+          <option value="Money">Money</option>
+          <option value="Food">Food</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Other">Other</option>
+        </select>
         <input
           type="number"
           placeholder='Amount Donated'
